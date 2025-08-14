@@ -57,8 +57,8 @@ public class CheckoutSolution {
             }
             applyFreeItemOffer(skuFrequency, freeItemsOffer);
 
-
-            return getPrice(skuFrequency);
+            return calculate(skuFrequency, bundleOffers, unitPrices);
+            //return getPrice(skuFrequency);
         } else {
             if (skus != null && skus.isEmpty()) return 0;
                 else return -1;
@@ -155,6 +155,7 @@ public class CheckoutSolution {
         unitItems.put('C', UNIT_PRICE_C);
         unitItems.put('D', UNIT_PRICE_D);
         unitItems.put('E', UNIT_PRICE_E);
+        unitItems.put('F', UNIT_PRICE_F);
 
         bundleOffers.put('A', List.of(
                 new BundleOffer(5,200),
@@ -165,6 +166,7 @@ public class CheckoutSolution {
         ));
 
         freeItems.add(new FreeItem('E', 2, 'B'));
+        freeItems.add(new FreeItem('F', 2, 'F'));
 
         Item a = new Item(UNIT_PRICE_A);
         Item b = new Item(UNIT_PRICE_B);
@@ -192,15 +194,13 @@ public class CheckoutSolution {
         Item x = new Item(UNIT_PRICE_Z);
         Item y = new Item(UNIT_PRICE_Y);
         Item z = new Item(UNIT_PRICE_X);
-
-        a.bundleOffers.put(3, BUNDLE_PRICE_3A);
-        a.bundleOffers.put(5, BUNDLE_PRICE_5A);
-        b.bundleOffers.put(2, BUNDLE_PRICE_2B);
+        
 
 
 
     }
 
 }
+
 
 
