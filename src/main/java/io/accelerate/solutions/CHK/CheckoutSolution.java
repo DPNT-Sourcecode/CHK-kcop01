@@ -13,6 +13,8 @@ public class CheckoutSolution {
     public static final int UNIT_PRICE_B = 30;
     public static final int BUNDLE_PRICE_5A = 200;
     public static final int BUNDLE_PRICE_3A = 130;
+    public static final int UNIT_PRICE_F = 10;
+    public static final int BUNDLE_OFFER_3F = 20;
 
     public Integer checkout(String skus) {
         if (skus != null &&(skus.matches("[A-Z]+"))) {
@@ -38,6 +40,7 @@ public class CheckoutSolution {
         int countC = itemsBuying.getOrDefault('C',0);
         int countD = itemsBuying.getOrDefault('D',0);
         int countE = itemsBuying.getOrDefault('E',0);
+        int countF = itemsBuying.getOrDefault('F',0);
 
         int freeB = countE / 2;
         countB = Math.max(0, countB - freeB);
@@ -47,6 +50,7 @@ public class CheckoutSolution {
         totalPrice += UNIT_PRICE_C * countC;
         totalPrice += UNIT_PRICE_D * countD;
         totalPrice += UNIT_PRICE_E * countE;
+        totalPrice += priceForF(countF);
 
         return totalPrice;
 
@@ -74,6 +78,15 @@ public class CheckoutSolution {
 
     }
 
+    private int priceForF(int countF) {
+        int total = 0;
+         total += (countF / 3) * BUNDLE_OFFER_3F;
+         countF = countF % 3;
+         total += countF * UNIT_PRICE_F;
+         return total;
+    }
+
 }
+
 
 
