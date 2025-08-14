@@ -9,4 +9,3 @@ public class BundleOffer {
         this.price = price;
     }
 }
-
