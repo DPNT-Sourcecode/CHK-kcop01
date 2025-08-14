@@ -35,15 +35,10 @@ public class CheckoutSolution {
     public static final int UNIT_PRICE_X = 90;
     public static final int UNIT_PRICE_Y = 10;
     public static final int UNIT_PRICE_Z = 50;
-    public static final int BUNDLE_PRICE_2B = 45;
-    public static final int BUNDLE_PRICE_5A = 200;
-    public static final int BUNDLE_PRICE_3A = 130;
-    public static final int BUNDLE_OFFER_3F = 20;
+
 
     public Integer checkout(String skus) {
         if (skus != null &&(skus.matches("[A-Z]+"))) {
-
-            Map<Character, Item> items = new HashMap<>();
 
             Map<Character, List<BundleOffer>> bundleOffers = new HashMap<>();
             Map<Character,Integer> unitPrices = new HashMap<>();
@@ -58,7 +53,6 @@ public class CheckoutSolution {
             applyFreeItemOffer(skuFrequency, freeItemsOffer);
 
             return calculate(skuFrequency, bundleOffers, unitPrices);
-            //return getPrice(skuFrequency);
         } else {
             if (skus != null && skus.isEmpty()) return 0;
                 else return -1;
@@ -96,7 +90,6 @@ public class CheckoutSolution {
 
 
     private void storeItems(Map<Character,Integer> unitItems, List<FreeItem> freeItems, Map<Character, List<BundleOffer>> bundleOffers) {
-
         unitItems.put('A', UNIT_PRICE_A);
         unitItems.put('B', UNIT_PRICE_B);
         unitItems.put('C', UNIT_PRICE_C);
@@ -107,6 +100,23 @@ public class CheckoutSolution {
         unitItems.put('H', UNIT_PRICE_H);
         unitItems.put('I', UNIT_PRICE_I);
         unitItems.put('J', UNIT_PRICE_J);
+        unitItems.put('K', UNIT_PRICE_K);
+        unitItems.put('L', UNIT_PRICE_L);
+        unitItems.put('M', UNIT_PRICE_M);
+        unitItems.put('N', UNIT_PRICE_N);
+        unitItems.put('O', UNIT_PRICE_O);
+        unitItems.put('P', UNIT_PRICE_P);
+        unitItems.put('Q', UNIT_PRICE_Q);
+        unitItems.put('R', UNIT_PRICE_R);
+        unitItems.put('S', UNIT_PRICE_S);
+        unitItems.put('T', UNIT_PRICE_T);
+        unitItems.put('U', UNIT_PRICE_U);
+        unitItems.put('V', UNIT_PRICE_V);
+        unitItems.put('W', UNIT_PRICE_W);
+        unitItems.put('X', UNIT_PRICE_X);
+        unitItems.put('Y', UNIT_PRICE_Y);
+        unitItems.put('Z', UNIT_PRICE_Z);
+
 
         bundleOffers.put('A', List.of(
                 new BundleOffer(5,200),
@@ -115,40 +125,31 @@ public class CheckoutSolution {
         bundleOffers.put('B', List.of(
                 new BundleOffer(2, 45)
         ));
+        bundleOffers.put('H', List.of(
+                new BundleOffer(5, 45),
+                new BundleOffer(10,80)
+        ));
+        bundleOffers.put('K', List.of(
+                new BundleOffer(2, 150)
+        ));
+        bundleOffers.put('P', List.of(
+                new BundleOffer(5, 200)
+        ));
+        bundleOffers.put('Q', List.of(
+                new BundleOffer(3, 80)
+        ));
+        bundleOffers.put('V', List.of(
+                new BundleOffer(2, 90),
+                new BundleOffer(3, 130)
+        ));
 
         freeItems.add(new FreeItem('E', 2, 'B'));
         freeItems.add(new FreeItem('F', 2, 'F'));
-
-        Item a = new Item(UNIT_PRICE_A);
-        Item b = new Item(UNIT_PRICE_B);
-        Item c = new Item(UNIT_PRICE_C);
-        Item d = new Item(UNIT_PRICE_D);
-        Item e = new Item(UNIT_PRICE_E);
-        Item f = new Item(UNIT_PRICE_F);
-        Item g = new Item(UNIT_PRICE_G);
-        Item h = new Item(UNIT_PRICE_H);
-        Item i = new Item(UNIT_PRICE_I);
-        Item j = new Item(UNIT_PRICE_J);
-        Item k = new Item(UNIT_PRICE_K);
-        Item l = new Item(UNIT_PRICE_L);
-        Item m = new Item(UNIT_PRICE_M);
-        Item n = new Item(UNIT_PRICE_N);
-        Item o = new Item(UNIT_PRICE_O);
-        Item p = new Item(UNIT_PRICE_P);
-        Item q = new Item(UNIT_PRICE_Q);
-        Item r = new Item(UNIT_PRICE_R);
-        Item s = new Item(UNIT_PRICE_S);
-        Item t = new Item(UNIT_PRICE_T);
-        Item u = new Item(UNIT_PRICE_U);
-        Item v = new Item(UNIT_PRICE_V);
-        Item w = new Item(UNIT_PRICE_W);
-        Item x = new Item(UNIT_PRICE_Z);
-        Item y = new Item(UNIT_PRICE_Y);
-        Item z = new Item(UNIT_PRICE_X);
-
-
-
+        freeItems.add(new FreeItem('N', 3, 'M'));
+        freeItems.add(new FreeItem('R', 3, 'Q'));
+        freeItems.add(new FreeItem('U', 3, 'U'));
 
     }
 
 }
+
