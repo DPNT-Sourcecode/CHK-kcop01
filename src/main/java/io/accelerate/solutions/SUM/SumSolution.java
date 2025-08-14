@@ -6,7 +6,15 @@ import io.accelerate.runner.SolutionNotImplementedException;
 public class SumSolution {
 
     public int compute(int x, int y) {
-        throw new SolutionNotImplementedException();
+        if (isPossitiveIntTo100(x) && isPossitiveIntTo100(y)) {
+            return x + y;
+        }
+        return -1;
+    }
+
+    private boolean isPossitiveIntTo100(int i) {
+        return i >= 0 && i <= 100;
     }
 
 }
+
