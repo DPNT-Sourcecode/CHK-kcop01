@@ -36,7 +36,7 @@ public class CheckoutSolution {
         for (char item : itemsBuying.keySet()) {
 
             if (item=='A') {
-                totalPrice += getBundleOffer(itemsBuying.get(item),3, 135, 50);
+                totalPrice += getBundleOffer(itemsBuying.get(item),3, 130, 50);
             }
             if (item == 'B') {
                 totalPrice += getBundleOffer(itemsBuying.get(item),2, 45, 30);
@@ -54,7 +54,8 @@ public class CheckoutSolution {
     }
     private int getBundleOffer(int itemsBuying ,int offerQuantity, int offerPrice, int unitPrice) {
         int offer = itemsBuying / offerQuantity;
-        int remaining = itemsBuying% offerQuantity;
+        int remaining = itemsBuying % offerQuantity;
         return (offer * offerPrice) + (remaining * unitPrice);
     }
 }
+
