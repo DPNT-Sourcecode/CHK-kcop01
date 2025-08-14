@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
-        if (skus != null && (skus.matches("[A-Z]+"))) {
+        if (skus != null &&(skus.matches("[A-Z]+"))) {
 
             Map<Character,Integer> skuFrequency = new HashMap<>();
             for (char item : skus.toCharArray()) {
@@ -15,7 +15,8 @@ public class CheckoutSolution {
             }
             Map<String, Integer> priceList = getPriceList();
             return getPrice(skuFrequency, priceList);
-        } else return -1;
+        } else if (skus.isEmpty()) return 0;
+            else return -1;
 
     }
 
@@ -56,4 +57,5 @@ public class CheckoutSolution {
 
     }
 }
+
 
