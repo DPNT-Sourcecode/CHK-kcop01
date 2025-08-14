@@ -126,8 +126,8 @@ public class CheckoutSolution {
                 new BundleOffer(2, 45)
         ));
         bundleOffers.put('H', List.of(
-                new BundleOffer(5, 45),
-                new BundleOffer(10,80)
+                new BundleOffer(10,80),
+                new BundleOffer(5, 45)
         ));
         bundleOffers.put('K', List.of(
                 new BundleOffer(2, 150)
@@ -139,8 +139,8 @@ public class CheckoutSolution {
                 new BundleOffer(3, 80)
         ));
         bundleOffers.put('V', List.of(
-                new BundleOffer(2, 90),
-                new BundleOffer(3, 130)
+                new BundleOffer(3, 130),
+                new BundleOffer(2, 90)
         ));
 
         freeItems.add(new FreeItem('E', 2, 'B'));
@@ -152,4 +152,5 @@ public class CheckoutSolution {
     }
 
 }
+
 

@@ -8,6 +8,30 @@ import static org.hamcrest.Matchers.equalTo;
 public class CheckoutSolutionTest
 {
     @Test
+    void testCheckout10H(){
+        String skus = "HHHHHHHHHH";
+        CheckoutSolution checkoutSolution = new CheckoutSolution();
+        int result = checkoutSolution.checkout(skus);
+
+        assertThat(result, equalTo(80));
+    }
+    @Test
+    void testCheckout11H(){
+        String skus = "HHHHHHHHHHH";
+        CheckoutSolution checkoutSolution = new CheckoutSolution();
+        int result = checkoutSolution.checkout(skus);
+
+        assertThat(result, equalTo(90));
+    }
+    @Test
+    void testCheckout3U(){
+        String skus = "UUU";
+        CheckoutSolution checkoutSolution = new CheckoutSolution();
+        int result = checkoutSolution.checkout(skus);
+
+        assertThat(result, equalTo(80));
+    }
+    @Test
     void testCheckout(){
         String skus = "AAABC";
         CheckoutSolution checkoutSolution = new CheckoutSolution();
@@ -127,3 +151,4 @@ public class CheckoutSolutionTest
             assertThat(result, equalTo(90));
         }
 }
+
