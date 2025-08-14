@@ -42,10 +42,10 @@ public class CheckoutSolution {
         if (skus != null &&(skus.matches("[A-Z]+"))) {
 
             Map<Character, Item> items = new HashMap<>();
-            storeItems(items);
-
-            List<FreeItem> freeItemsOffer = new ArrayList<>();
             Map<Character,Integer> unitPrices = new HashMap<>();
+            List<FreeItem> freeItemsOffer = new ArrayList<>();
+
+            storeItems(items, unitPrices, freeItemsOffer);
             Map<Character,Integer> skuFrequency = new HashMap<>();
             for (char item : skus.toCharArray()) {
                 skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
@@ -149,14 +149,16 @@ public class CheckoutSolution {
         a.bundleOffers.put(5, BUNDLE_PRICE_5A);
         b.bundleOffers.put(2, BUNDLE_PRICE_2B);
 
-        e.bundleOffers.put(2, BUNDLE_PRICE_2B);
-
-        List<FreeItem> freeItemsOffer = new ArrayList<>();
-
+        e.freeOffer.add(new FreeItem(2,'B'));
+        
         items.put('A', a);
         items.put('B', b);
+        items.put('C', c);
+        items.put('D', d);
+        items.put('E', e);
 
 
     }
 
 }
+
