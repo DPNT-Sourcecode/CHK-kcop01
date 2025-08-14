@@ -28,6 +28,3 @@ public class SumSolutionTest {
         assertThat(sum.compute(1, 100), equalTo(101));
     }
 }
-
-
-
