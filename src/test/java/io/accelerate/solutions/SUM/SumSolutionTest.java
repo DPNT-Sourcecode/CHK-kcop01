@@ -23,6 +23,11 @@ public class SumSolutionTest {
     public void compute_sum1() {
         assertThat(sum.compute(0, 1), equalTo(1));
     }
+    @Test
+    public void compute_sum100() {
+        assertThat(sum.compute(1, 100), equalTo(101));
+    }
 }
+
 
 
