@@ -15,6 +15,14 @@ public class CheckoutSolutionTest
 
         assertThat(result, equalTo(180));
     }
+    @Test
+    void testCheckoutOffers(){
+        String skus = "AAAA";
+        CheckoutSolution checkoutSolution = new CheckoutSolution();
+        int result = checkoutSolution.checkout(skus);
+
+        assertThat(result, equalTo(200));
+    }
 
     @Test
     void testCheckout2(){
@@ -47,5 +55,6 @@ public class CheckoutSolutionTest
         assertThat(result, equalTo(-1));
     }
 }
+
 
 
