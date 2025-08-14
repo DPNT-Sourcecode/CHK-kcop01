@@ -43,10 +43,10 @@ public class CheckoutSolution {
 
             }
             if (item == 'C'){
-                totalPrice += 20;
+                totalPrice += 20 * itemsBuying.get(item);
             }
             if (item == 'D'){
-                totalPrice += 15;
+                totalPrice += 15* itemsBuying.get(item);
             }
         }
         return totalPrice;
@@ -58,4 +58,5 @@ public class CheckoutSolution {
         return (offer * offerPrice) + (remaining * unitPrice);
     }
 }
+
 
