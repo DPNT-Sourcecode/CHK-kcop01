@@ -81,7 +81,7 @@ public class CheckoutSolution {
             int quantity = entry.getValue();
 
             List<BundleOffer> bundles = bundleOffers.getOrDefault(product,List.of());
-            bundles.sort((bundle1, bundle2 )-> bundle2.bundleSize - bundle1.bundleSize);
+            //bundles.sort((bundle1, bundle2) -> bundle2.bundleSize - bundle1.bundleSize);
 
             for (BundleOffer offer : bundles) {
                 totalPrice += (quantity / offer.bundleSize) * offer.price;
@@ -194,13 +194,14 @@ public class CheckoutSolution {
         Item x = new Item(UNIT_PRICE_Z);
         Item y = new Item(UNIT_PRICE_Y);
         Item z = new Item(UNIT_PRICE_X);
-        
+
 
 
 
     }
 
 }
+
 
 
 
