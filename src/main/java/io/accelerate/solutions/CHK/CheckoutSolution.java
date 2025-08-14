@@ -33,22 +33,32 @@ public class CheckoutSolution {
 
     private int getPrice(Map<Character,Integer> itemsBuying, Map<String, Integer> priceList) {
         int totalPrice = 0;
-        for (char item : itemsBuying.keySet()) {
 
-            if (item=='A') {
-                totalPrice += getBundleOffer(itemsBuying.get(item),3, 130, 50);
-            }
-            if (item == 'B') {
-                totalPrice += getBundleOffer(itemsBuying.get(item),2, 45, 30);
+        int countA = itemsBuying.get('A');
+        int countB = itemsBuying.get('B');
+        int countC = itemsBuying.get('C');
+        int countD = itemsBuying.get('D');
+        int countE = itemsBuying.get('E');
 
-            }
-            if (item == 'C'){
-                totalPrice += 20 * itemsBuying.get(item);
-            }
-            if (item == 'D'){
-                totalPrice += 15* itemsBuying.get(item);
-            }
-        }
+        totalPrice += getBundleOffer(countA,3,130,50);
+
+//        for (char item : itemsBuying.keySet()) {
+//
+//
+//            if (item=='A') {
+//                totalPrice += getBundleOffer(itemsBuying.get(item),3, 130, 50);
+//            }
+//            if (item == 'B') {
+//                totalPrice += getBundleOffer(itemsBuying.get(item),2, 45, 30);
+//
+//            }
+//            if (item == 'C'){
+//                totalPrice += 20 * itemsBuying.get(item);
+//            }
+//            if (item == 'D'){
+//                totalPrice += 15* itemsBuying.get(item);
+//            }
+//        }
         return totalPrice;
 
     }
@@ -57,4 +67,20 @@ public class CheckoutSolution {
         int remaining = itemsBuying % offerQuantity;
         return (offer * offerPrice) + (remaining * unitPrice);
     }
+    private int getBundleOfferE(Map<Character,Integer> itemB, int itemBuying ,int offerQuantity, int offerPrice, int unitPrice) {
+        int freeB = itemBuying / 2;
+        int offer = itemBuying / offerQuantity;
+        if (itemB.get('B') > 0) {
+            int b = itemB.get('B') - 1;
+
+
+        }
+        int remaining = itemBuying % offerQuantity;
+        if (offer >= 1 ) {
+            // b is free
+        }
+
+
+    }
 }
+
