@@ -1,4 +1,6 @@
 package io.accelerate.solutions.CHK;
 
-public class CheckoutSolutionTest {
+public class CheckoutSolutionTest
+{
 }
+
