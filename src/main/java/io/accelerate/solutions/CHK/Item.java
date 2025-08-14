@@ -1,21 +1,23 @@
 package io.accelerate.solutions.CHK;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class Item {
-    int price;
-    //HashMap<Integer,Integer> specialOffer;
+    int unitPrice;
+    Map<Integer, Integer> bundleOffers;
+    List<FreeItem> freeOffer;
 
     public Item(int price) {
-        this.price = price;
+        this.unitPrice = price;
        // this.specialOffer = specialOffer;
     }
 
-    public int getPrice() {
-        return price;
+    public int getUnitPrice() {
+        return unitPrice;
     }
 
 //    public HashMap<Integer, Integer> getSpecialOffer() {
 //        return specialOffer;
 //    }
 }
+
