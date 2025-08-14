@@ -24,7 +24,7 @@ public class CheckoutSolutionTest
         assertThat(result, equalTo(180));
     }
     @Test
-    void testCheckoutOffers3(){
+    void testCheckoutOffers5A(){
         String skus = "AAAAA";
         CheckoutSolution checkoutSolution = new CheckoutSolution();
         int result = checkoutSolution.checkout(skus);
@@ -32,12 +32,20 @@ public class CheckoutSolutionTest
         assertThat(result, equalTo(200));
     }
     @Test
-    void testCheckoutOffers2(){
+    void testCheckoutOffers6A(){
         String skus = "AAAAAA";
         CheckoutSolution checkoutSolution = new CheckoutSolution();
         int result = checkoutSolution.checkout(skus);
 
-        assertThat(result, equalTo(260));
+        assertThat(result, equalTo(250));
+    }
+    @Test
+    void testCheckoutOffers7A(){
+        String skus = "AAAAAAA";
+        CheckoutSolution checkoutSolution = new CheckoutSolution();
+        int result = checkoutSolution.checkout(skus);
+
+        assertThat(result, equalTo(300));
     }
     @Test
     void testCheckoutOffers4(){
@@ -95,3 +103,4 @@ public class CheckoutSolutionTest
             assertThat(result, equalTo(160));
         }
 }
+
