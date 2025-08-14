@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Math.max;
+
 public class CheckoutSolution {
 
     public static final int UNIT_PRICE_A = 50;
@@ -42,11 +44,14 @@ public class CheckoutSolution {
         if (skus != null &&(skus.matches("[A-Z]+"))) {
 
             Map<Character, Item> items = new HashMap<>();
-            Map<Character, List<>>
+
+            Map<Character, List<BundleOffer>> bundleOffers = new HashMap<>();
             Map<Character,Integer> unitPrices = new HashMap<>();
             List<FreeItem> freeItemsOffer = new ArrayList<>();
 
-            storeItems(items, unitPrices, freeItemsOffer);
+            storeItems(unitPrices, freeItemsOffer, bundleOffers);
+
+            applyFreeItemOffer(freeItemsOffer);
             Map<Character,Integer> skuFrequency = new HashMap<>();
             for (char item : skus.toCharArray()) {
                 skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
@@ -60,7 +65,15 @@ public class CheckoutSolution {
         }
     }
 
-    private void applyFreeItemOffer() {
+    private void applyFreeItemOffer(Map<Character,Integer>  itemsBought, List<FreeItem> freeItemList) {
+        for ( FreeItem freeItem : freeItemList) {
+            int bought = itemsBought.getOrDefault(freeItem.buyItem,0);
+            int freeItems = (bought / freeItem.buyQuantity);
+            itemsBought.put(freeItem.freeItem, max(0, itemsBought.getOrDefault(freeItem.freeItem, 0) - freeItems));
+
+
+
+        }
 
     }
 
@@ -75,7 +88,7 @@ public class CheckoutSolution {
         int countF = itemsBuying.getOrDefault('F',0);
 
         int freeB = countE / 2;
-        countB = Math.max(0, countB - freeB);
+        countB = max(0, countB - freeB);
 
         totalPrice += priceForA(countA);
         totalPrice += priceForB(countB);
@@ -118,7 +131,24 @@ public class CheckoutSolution {
          return total;
     }
 
-    private void storeItems(Map<Character, Item> items, List<FreeItem> freeItems) {
+    private void storeItems(Map<Character,Integer> unitItems, List<FreeItem> freeItems, Map<Character, List<BundleOffer>> bundleOffers) {
+
+        unitItems.put('A', UNIT_PRICE_A);
+        unitItems.put('B', UNIT_PRICE_B);
+        unitItems.put('C', UNIT_PRICE_C);
+        unitItems.put('D', UNIT_PRICE_D);
+        unitItems.put('E', UNIT_PRICE_E);
+
+        bundleOffers.put('A', List.of(
+                new BundleOffer(5,200),
+                new BundleOffer(3, 130))
+        );
+        bundleOffers.put('B', List.of(
+                new BundleOffer(2, 45)
+        ));
+
+        freeItems.add(new FreeItem('E', 2, 'B'));
+
         Item a = new Item(UNIT_PRICE_A);
         Item b = new Item(UNIT_PRICE_B);
         Item c = new Item(UNIT_PRICE_C);
@@ -150,16 +180,9 @@ public class CheckoutSolution {
         a.bundleOffers.put(5, BUNDLE_PRICE_5A);
         b.bundleOffers.put(2, BUNDLE_PRICE_2B);
 
-        e.freeOffer.add(new FreeItem(2,'B'));
-        freeItems.add(new FreeItem())
-
-        items.put('A', a);
-        items.put('B', b);
-        items.put('C', c);
-        items.put('D', d);
-        items.put('E', e);
 
 
     }
 
 }
+
