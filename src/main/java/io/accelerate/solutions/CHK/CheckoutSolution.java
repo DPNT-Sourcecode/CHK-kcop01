@@ -7,13 +7,15 @@ import java.util.Map;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
-        if (skus == null || (!skus.matches("[A-Z]"))) return -1;
-        Map<Character,Integer> skuFrequency = new HashMap<>();
-        for (char item : skus.toCharArray()) {
-            skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
-        }
-        Map<String, Integer> priceList = getPriceList();
-        return getPrice(skuFrequency, priceList);
+        if (skus != null && (skus.matches("[A-Z]+"))) {
+
+            Map<Character,Integer> skuFrequency = new HashMap<>();
+            for (char item : skus.toCharArray()) {
+                skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
+            }
+            Map<String, Integer> priceList = getPriceList();
+            return getPrice(skuFrequency, priceList);
+        } else return -1;
 
     }
 
@@ -54,3 +56,4 @@ public class CheckoutSolution {
 
     }
 }
+
