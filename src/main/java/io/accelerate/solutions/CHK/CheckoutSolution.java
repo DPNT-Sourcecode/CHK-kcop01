@@ -40,28 +40,15 @@ public class CheckoutSolution {
         int countD = itemsBuying.getOrDefault('D',0);
         int countE = itemsBuying.getOrDefault('E',0);
 
+        int freeB = countE / 2;
+        countB = Math.max(0, countB - freeB);
+
         totalPrice += getBundleOffer(countA,3,130,50);
         totalPrice += getBundleOffer(countB,2,45,30);
         totalPrice += 20 * countC;
         totalPrice += 15 * countD;
+        totalPrice += 40 * countE;
 
-//        for (char item : itemsBuying.keySet()) {
-//
-//
-//            if (item=='A') {
-//                totalPrice += getBundleOffer(itemsBuying.get(item),3, 130, 50);
-//            }
-//            if (item == 'B') {
-//                totalPrice += getBundleOffer(itemsBuying.get(item),2, 45, 30);
-//
-//            }
-//            if (item == 'C'){
-//                totalPrice += 20 * itemsBuying.get(item);
-//            }
-//            if (item == 'D'){
-//                totalPrice += 15* itemsBuying.get(item);
-//            }
-//        }
         return totalPrice;
 
     }
@@ -87,5 +74,6 @@ public class CheckoutSolution {
         return freeB;
     }
 }
+
 
 
