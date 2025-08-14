@@ -79,11 +79,20 @@ public class CheckoutSolutionTest
     }
 
     @Test
-    void testCheckout_null(){
+    void testCheckout_null() {
         String skus = null;
         CheckoutSolution checkoutSolution = new CheckoutSolution();
         int result = checkoutSolution.checkout(skus);
 
         assertThat(result, equalTo(-1));
     }
+        @Test
+        void testCheckoutOfferE(){
+            String skus = "ABBEE";
+            CheckoutSolution checkoutSolution = new CheckoutSolution();
+            int result = checkoutSolution.checkout(skus);
+
+            assertThat(result, equalTo(160));
+        }
 }
+

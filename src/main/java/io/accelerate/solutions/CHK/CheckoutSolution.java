@@ -52,28 +52,15 @@ public class CheckoutSolution {
         return totalPrice;
 
     }
+
     private int getBundleOffer(int itemsBuying ,int offerQuantity, int offerPrice, int unitPrice) {
         int offer = itemsBuying / offerQuantity;
         int remaining = itemsBuying % offerQuantity;
         return (offer * offerPrice) + (remaining * unitPrice);
     }
-    private int getBundleOfferE(Map<Character,Integer> itemB, int itemBuying ,int offerQuantity, int offerPrice, int unitPrice) {
-        int freeB = itemBuying / 2;
-        int offer = itemBuying / offerQuantity;
-        if (itemB.get('B') > 0) {
-            int b = itemB.get('B') - 1;
 
-
-        }
-        int remaining = itemBuying % offerQuantity;
-        if (offer >= 1 ) {
-            // b is free
-        }
-
-
-        return freeB;
-    }
 }
+
 
 
 
