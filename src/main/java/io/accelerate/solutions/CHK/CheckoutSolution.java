@@ -12,9 +12,15 @@ public class CheckoutSolution {
             skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
         }
 
+
         return -1;
 
     }
+
+    private getPrice(Map<Character, Integer> items) {
+        
+    }
 }
+
 
 
