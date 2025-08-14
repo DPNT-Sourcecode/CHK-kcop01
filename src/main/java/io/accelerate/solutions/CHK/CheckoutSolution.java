@@ -11,13 +11,21 @@ public class CheckoutSolution {
         for (char item : skus.toCharArray()) {
             skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
         }
+        Map<String, Integer> priceList = getPriceList();
 
 
         return -1;
 
     }
 
-    private getPrice(Map<Character, Integer> items) {
-        
+    private Map<String, Integer> getPriceList() {
+        Map<String, Integer> itemPrice = new HashMap<>();
+        itemPrice.put("A",50);
+        itemPrice.put("B",30);
+        itemPrice.put("C",20);
+        itemPrice.put("D",15);
+        return itemPrice;
+
     }
 }
+

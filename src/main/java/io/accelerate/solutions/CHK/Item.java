@@ -4,18 +4,19 @@ import java.util.HashMap;
 
 public class Item {
     int price;
-    HashMap<Integer,Integer> specialOffer;
+    //HashMap<Integer,Integer> specialOffer;
 
-    public Item(int price, HashMap<Integer, Integer> specialOffer) {
+    public Item(int price) {
         this.price = price;
-        this.specialOffer = specialOffer;
+       // this.specialOffer = specialOffer;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public HashMap<Integer, Integer> getSpecialOffer() {
-        return specialOffer;
-    }
+//    public HashMap<Integer, Integer> getSpecialOffer() {
+//        return specialOffer;
+//    }
 }
+
