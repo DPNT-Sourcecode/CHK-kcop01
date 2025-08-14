@@ -35,7 +35,7 @@ public class CheckoutSolution {
         int totalPrice = 0;
         for (char item : itemsBuying.keySet()) {
             if (item=='A') {
-                if (itemsBuying.get(item).equals(3)) {
+                if (itemsBuying.get(item) % 3 == 0) {
                     totalPrice += 130;
                 } else {
                     totalPrice += 50 * itemsBuying.get(item);
@@ -59,6 +59,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
