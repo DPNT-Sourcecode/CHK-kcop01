@@ -50,7 +50,7 @@ public class CheckoutSolution {
             for (char item : skus.toCharArray()) {
                 skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
             }
-            applyFreeItemOffer(skuFrequency, freeItemsOffer);
+            applyFreeItemOffer(skuFrequency, freeItemsOffer, unitPrices);
 
             return calculate(skuFrequency, bundleOffers, unitPrices);
         } else {
@@ -59,8 +59,19 @@ public class CheckoutSolution {
         }
     }
 
-    private void applyFreeItemOffer(Map<Character,Integer>  itemsBought, List<FreeItem> freeItemList) {
+    private void applyFreeItemOffer(Map<Character,Integer>  itemsBought, List<FreeItem> freeItemList, Map<Character,Integer> unitPrices ) {
         for ( FreeItem freeItem : freeItemList) {
+            int quantity = itemsBought.getOrDefault(freeItem.buyItem, 0);
+            if (freeItem.buyItem == freeItem.freeItem){
+                int group = freeItem.buyQuantity + 1;
+                int fullGroup = quantity / group;
+                int remainder = quantity % group;
+                int paidQuanity = fullGroup * freeItem.buyQuantity + Math.min(remainder, freeItem.buyQuantity);
+                int total = paidQuanity * unitPrices.get(freeItem.buyItem);
+                itemsBought.put(freeItem.freeItem, total);
+
+            }
+
             int bought = itemsBought.getOrDefault(freeItem.buyItem,0);
             int freeItems = (bought / freeItem.buyQuantity) * freeItem.freeQuantity;
             int j = itemsBought.getOrDefault(freeItem.freeItem, 0);
@@ -153,3 +164,4 @@ public class CheckoutSolution {
     }
 
 }
+
