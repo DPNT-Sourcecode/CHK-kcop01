@@ -34,19 +34,13 @@ public class CheckoutSolution {
     private int getPrice(Map<Character,Integer> itemsBuying, Map<String, Integer> priceList) {
         int totalPrice = 0;
         for (char item : itemsBuying.keySet()) {
+
             if (item=='A') {
-                if (itemsBuying.get(item) % 3 == 0) {
-                    totalPrice += 130;
-                } else {
-                    totalPrice += 50 * itemsBuying.get(item);
-                }
+                totalPrice += getBundleOffer(itemsBuying.get(item),3, 135, 50);
             }
             if (item == 'B') {
-                if (itemsBuying.get(item).equals(2)) {
-                    totalPrice += 45;
-                } else {
-                    totalPrice += 30 * itemsBuying.get(item);
-                }
+                totalPrice += getBundleOffer(itemsBuying.get(item),2, 45, 30);
+
             }
             if (item == 'C'){
                 totalPrice += 20;
@@ -58,9 +52,9 @@ public class CheckoutSolution {
         return totalPrice;
 
     }
+    private int getBundleOffer(int itemsBuying ,int offerQuantity, int offerPrice, int unitPrice) {
+        int offer = itemsBuying / offerQuantity;
+        int remaining = itemsBuying% offerQuantity;
+        return (offer * offerPrice) + (remaining * unitPrice);
+    }
 }
-
-
-
-
-
