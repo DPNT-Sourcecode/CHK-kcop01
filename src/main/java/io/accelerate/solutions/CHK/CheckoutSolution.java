@@ -14,6 +14,7 @@ public class CheckoutSolution {
         Map<String, Integer> priceList = getPriceList();
 
 
+
         return -1;
 
     }
@@ -25,7 +26,35 @@ public class CheckoutSolution {
         itemPrice.put("C",20);
         itemPrice.put("D",15);
         return itemPrice;
+    }
+
+    private int getPrice(HashMap<Character,Integer> itemsBuying, Map<String, Integer> priceList) {
+        int totalPrice = 0;
+        for (char item : itemsBuying.keySet()) {
+            if (item=='A') {
+                if (itemsBuying.get(item).equals(3)) {
+                    totalPrice += 130;
+                } else {
+                    totalPrice += 50 * itemsBuying.get(item);
+                }
+            }
+            if (item == 'B') {
+                if (itemsBuying.get(item).equals(2)) {
+                    totalPrice += 45;
+                } else {
+                    totalPrice += 30 * itemsBuying.get(item);
+                }
+            }
+            if (item == 'C'){
+                totalPrice += 20;
+            }
+            if (item == 'D'){
+                totalPrice += 15;
+            }
+        }
+        return totalPrice;
 
     }
 }
+
 
