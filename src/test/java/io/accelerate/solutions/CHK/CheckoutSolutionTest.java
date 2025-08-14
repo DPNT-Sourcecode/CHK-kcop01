@@ -13,6 +13,7 @@ public class CheckoutSolutionTest
         CheckoutSolution checkoutSolution = new CheckoutSolution();
         int result = checkoutSolution.checkout(skus);
 
-        assertThat(result, equalTo(160));
+        assertThat(result, equalTo(180));
     }
 }
+

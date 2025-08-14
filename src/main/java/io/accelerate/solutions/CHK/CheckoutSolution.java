@@ -7,15 +7,13 @@ import java.util.Map;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
+        if (skus.isEmpty()) return -1;
         Map<Character,Integer> skuFrequency = new HashMap<>();
         for (char item : skus.toCharArray()) {
             skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
         }
         Map<String, Integer> priceList = getPriceList();
-
-
-
-        return -1;
+        return getPrice(skuFrequency, priceList);
 
     }
 
@@ -28,7 +26,7 @@ public class CheckoutSolution {
         return itemPrice;
     }
 
-    private int getPrice(HashMap<Character,Integer> itemsBuying, Map<String, Integer> priceList) {
+    private int getPrice(Map<Character,Integer> itemsBuying, Map<String, Integer> priceList) {
         int totalPrice = 0;
         for (char item : itemsBuying.keySet()) {
             if (item=='A') {
@@ -56,5 +54,6 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
