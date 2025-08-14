@@ -10,6 +10,4 @@ public class FreeItem {
         this.buyQuantity = buyQuantity;
         this.freeItem = freeItem;
     }
-
 }
-
