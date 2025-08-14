@@ -16,8 +16,7 @@ public class CheckoutSolution {
             Map<String, Integer> priceList = getPriceList();
             return getPrice(skuFrequency, priceList);
         } else {
-            assert skus != null;
-            if (skus.isEmpty()) return 0;
+            if (skus != null && skus.isEmpty()) return 0;
                 else return -1;
         }
 
@@ -60,6 +59,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
