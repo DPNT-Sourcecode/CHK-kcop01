@@ -34,13 +34,16 @@ public class CheckoutSolution {
     private int getPrice(Map<Character,Integer> itemsBuying, Map<String, Integer> priceList) {
         int totalPrice = 0;
 
-        int countA = itemsBuying.get('A');
-        int countB = itemsBuying.get('B');
-        int countC = itemsBuying.get('C');
-        int countD = itemsBuying.get('D');
-        int countE = itemsBuying.get('E');
+        int countA = itemsBuying.getOrDefault('A',0);
+        int countB = itemsBuying.getOrDefault('B',0);
+        int countC = itemsBuying.getOrDefault('C',0);
+        int countD = itemsBuying.getOrDefault('D',0);
+        int countE = itemsBuying.getOrDefault('E',0);
 
         totalPrice += getBundleOffer(countA,3,130,50);
+        totalPrice += getBundleOffer(countB,2,45,30);
+        totalPrice += 20 * countC;
+        totalPrice += 15 * countD;
 
 //        for (char item : itemsBuying.keySet()) {
 //
@@ -81,6 +84,8 @@ public class CheckoutSolution {
         }
 
 
+        return freeB;
     }
 }
+
 
