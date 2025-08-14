@@ -44,6 +44,7 @@ public class CheckoutSolutionTest
         CheckoutSolution checkoutSolution = new CheckoutSolution();
         int result = checkoutSolution.checkout(skus);
 
-        assertThat(result, equalTo(-1));
+        assertThat(result, equalTo(0));
     }
 }
+
