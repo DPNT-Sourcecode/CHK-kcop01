@@ -63,6 +63,7 @@ public class CheckoutSolution {
         for ( FreeItem freeItem : freeItemList) {
             int bought = itemsBought.getOrDefault(freeItem.buyItem,0);
             int freeItems = (bought / freeItem.buyQuantity);
+            int j = itemsBought.getOrDefault(freeItem.freeItem, 0);
             itemsBought.put(freeItem.freeItem, max(0, itemsBought.getOrDefault(freeItem.freeItem, 0) - freeItems));
         }
 
@@ -152,5 +153,3 @@ public class CheckoutSolution {
     }
 
 }
-
-
