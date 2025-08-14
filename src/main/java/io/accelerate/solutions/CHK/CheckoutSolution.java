@@ -51,11 +51,11 @@ public class CheckoutSolution {
 
             storeItems(unitPrices, freeItemsOffer, bundleOffers);
 
-            applyFreeItemOffer(freeItemsOffer);
             Map<Character,Integer> skuFrequency = new HashMap<>();
             for (char item : skus.toCharArray()) {
                 skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
             }
+            applyFreeItemOffer(skuFrequency, freeItemsOffer);
 
 
             return getPrice(skuFrequency);
@@ -70,10 +70,27 @@ public class CheckoutSolution {
             int bought = itemsBought.getOrDefault(freeItem.buyItem,0);
             int freeItems = (bought / freeItem.buyQuantity);
             itemsBought.put(freeItem.freeItem, max(0, itemsBought.getOrDefault(freeItem.freeItem, 0) - freeItems));
-
-
-
         }
+
+    }
+
+    private int calculate(Map<Character,Integer> itemsBuying, Map<Character, List<BundleOffer>> bundleOffers, Map<Character,Integer> unitPrices) {
+        int totalPrice = 0;
+        for (Map.Entry<Character, Integer> entry: itemsBuying.entrySet()) {
+            char product = entry.getKey();
+            int quantity = entry.getValue();
+
+            List<BundleOffer> bundles = bundleOffers.getOrDefault(product,List.of());
+            bundles.sort((bundle1, bundle2 )-> bundle2.bundleSize - bundle1.bundleSize);
+
+            for (BundleOffer offer : bundles) {
+                totalPrice += (quantity / offer.bundleSize) * offer.price;
+                quantity %= offer.bundleSize;
+
+            }
+             totalPrice += quantity * unitPrices.getOrDefault(product,0);
+        }
+        return totalPrice;
 
     }
 
@@ -185,4 +202,5 @@ public class CheckoutSolution {
     }
 
 }
+
 
