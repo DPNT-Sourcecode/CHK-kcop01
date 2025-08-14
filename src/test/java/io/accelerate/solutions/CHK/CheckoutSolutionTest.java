@@ -47,6 +47,3 @@ public class CheckoutSolutionTest
         assertThat(result, equalTo(-1));
     }
 }
-
-
-
