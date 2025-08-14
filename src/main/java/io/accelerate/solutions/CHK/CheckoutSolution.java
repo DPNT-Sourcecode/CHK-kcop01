@@ -14,6 +14,8 @@ public class CheckoutSolution {
     public static final int OFFER_PRICE_B = 45;
     public static final int UNIT_PRICE_A = 50;
     public static final int UNIT_PRICE_B = 30;
+    public static final int BUNDLE_PRICE_5A = 200;
+    public static final int BUNDLE_PRICE_3A = 130;
 
     public Integer checkout(String skus) {
         if (skus != null &&(skus.matches("[A-Z]+"))) {
@@ -60,10 +62,16 @@ public class CheckoutSolution {
     }
 
     private int priceForA(int countA) {
-        int unitPrice = countA * UNIT_PRICE_A;
-        int offer3 = (countA / 3) * OFFER_PRICE_A + (countA % 3) * 50;
-        int offer5 = (countA / 5) * 200 + (countA % 5) * 50;
+        int total = 0;
+        total += (countA / 5) * BUNDLE_PRICE_5A;
+        countA = countA % 5;
 
+        total += (countA / 3) * BUNDLE_PRICE_3A;
+        countA = countA % 3;
+
+        total += countA * UNIT_PRICE_A;
+        return total;
     }
 
 }
+
