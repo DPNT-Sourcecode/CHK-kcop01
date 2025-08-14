@@ -59,5 +59,11 @@ public class CheckoutSolution {
         return (offer * offerPrice) + (remaining * unitPrice);
     }
 
-}
+    private int priceForA(int countA) {
+        int unitPrice = countA * UNIT_PRICE_A;
+        int offer3 = (countA / 3) * OFFER_PRICE_A + (countA % 3) * 50;
+        int offer5 = (countA / 5) * 200 + (countA % 5) * 50;
 
+    }
+
+}
