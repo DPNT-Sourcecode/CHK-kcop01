@@ -18,11 +18,24 @@ public class CheckoutSolutionTest
 
     @Test
     void testCheckout2(){
-        String skus = "AAABBC";
+        String skus = "";
         CheckoutSolution checkoutSolution = new CheckoutSolution();
         int result = checkoutSolution.checkout(skus);
-
-        assertThat(result, equalTo(195));
+        assertThat(result, equalTo(0));
+    }
+    @Test
+    void testCheckout3(){
+        String skus = "a";
+        CheckoutSolution checkoutSolution = new CheckoutSolution();
+        int result = checkoutSolution.checkout(skus);
+        assertThat(result, equalTo(-1));
+    }
+    @Test
+    void testCheckout4(){
+        String skus = "-";
+        CheckoutSolution checkoutSolution = new CheckoutSolution();
+        int result = checkoutSolution.checkout(skus);
+        assertThat(result, equalTo(-1));
     }
 
     @Test
@@ -34,5 +47,6 @@ public class CheckoutSolutionTest
         assertThat(result, equalTo(-1));
     }
 }
+
 
 
