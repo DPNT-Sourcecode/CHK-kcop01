@@ -8,12 +8,12 @@ public class CheckoutSolution {
     public static final int UNIT_PRICE_C = 20;
     public static final int UNIT_PRICE_D = 15;
     public static final int UNIT_PRICE_E = 40;
-    public static final int BUNDLE_PRICE_2B = 45;
+    public static final int UNIT_PRICE_F = 10;
     public static final int UNIT_PRICE_A = 50;
     public static final int UNIT_PRICE_B = 30;
+    public static final int BUNDLE_PRICE_2B = 45;
     public static final int BUNDLE_PRICE_5A = 200;
     public static final int BUNDLE_PRICE_3A = 130;
-    public static final int UNIT_PRICE_F = 10;
     public static final int BUNDLE_OFFER_3F = 20;
 
     public Integer checkout(String skus) {
@@ -28,7 +28,6 @@ public class CheckoutSolution {
             if (skus != null && skus.isEmpty()) return 0;
                 else return -1;
         }
-
     }
 
 
@@ -87,6 +86,3 @@ public class CheckoutSolution {
     }
 
 }
-
-
-
