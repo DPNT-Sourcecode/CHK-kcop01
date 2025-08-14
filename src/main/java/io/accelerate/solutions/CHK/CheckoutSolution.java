@@ -62,7 +62,7 @@ public class CheckoutSolution {
     private void applyFreeItemOffer(Map<Character,Integer>  itemsBought, List<FreeItem> freeItemList) {
         for ( FreeItem freeItem : freeItemList) {
             int bought = itemsBought.getOrDefault(freeItem.buyItem,0);
-            int freeItems = (bought / freeItem.buyQuantity);
+            int freeItems = (bought / freeItem.buyQuantity) * freeItem.freeQuantity;
             int j = itemsBought.getOrDefault(freeItem.freeItem, 0);
             itemsBought.put(freeItem.freeItem, max(0, itemsBought.getOrDefault(freeItem.freeItem, 0) - freeItems));
         }
@@ -144,12 +144,13 @@ public class CheckoutSolution {
                 new BundleOffer(2, 90)
         ));
 
-        freeItems.add(new FreeItem('E', 2, 'B'));
-        freeItems.add(new FreeItem('F', 2, 'F'));
-        freeItems.add(new FreeItem('N', 3, 'M'));
-        freeItems.add(new FreeItem('R', 3, 'Q'));
-        freeItems.add(new FreeItem('U', 3, 'U'));
+        freeItems.add(new FreeItem('E', 2, 'B', 1));
+        freeItems.add(new FreeItem('F', 2, 'F', 1));
+        freeItems.add(new FreeItem('N', 3, 'M', 1));
+        freeItems.add(new FreeItem('R', 3, 'Q', 1));
+        freeItems.add(new FreeItem('U', 3, 'U', 1));
 
     }
 
 }
+
