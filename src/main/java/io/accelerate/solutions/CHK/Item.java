@@ -19,4 +19,3 @@ public class Item {
         return specialOffer;
     }
 }
-
