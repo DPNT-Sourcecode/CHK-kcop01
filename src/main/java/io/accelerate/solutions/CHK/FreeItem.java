@@ -13,4 +13,3 @@ public class FreeItem {
         this.freeQuantity = freeQuantity;
     }
 }
-
