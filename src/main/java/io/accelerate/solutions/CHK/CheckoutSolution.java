@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
-        if (skus.isEmpty()) return -1;
+        if (skus == null || skus.isEmpty()) return -1;
         Map<Character,Integer> skuFrequency = new HashMap<>();
         for (char item : skus.toCharArray()) {
             skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
@@ -54,6 +54,7 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
 
