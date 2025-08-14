@@ -42,6 +42,7 @@ public class CheckoutSolution {
         if (skus != null &&(skus.matches("[A-Z]+"))) {
 
             Map<Character, Item> items = new HashMap<>();
+            Map<Character, List<>>
             Map<Character,Integer> unitPrices = new HashMap<>();
             List<FreeItem> freeItemsOffer = new ArrayList<>();
 
@@ -117,7 +118,7 @@ public class CheckoutSolution {
          return total;
     }
 
-    private void storeItems(Map<Character, Item> items) {
+    private void storeItems(Map<Character, Item> items, List<FreeItem> freeItems) {
         Item a = new Item(UNIT_PRICE_A);
         Item b = new Item(UNIT_PRICE_B);
         Item c = new Item(UNIT_PRICE_C);
@@ -150,7 +151,8 @@ public class CheckoutSolution {
         b.bundleOffers.put(2, BUNDLE_PRICE_2B);
 
         e.freeOffer.add(new FreeItem(2,'B'));
-        
+        freeItems.add(new FreeItem())
+
         items.put('A', a);
         items.put('B', b);
         items.put('C', c);
@@ -161,4 +163,5 @@ public class CheckoutSolution {
     }
 
 }
+
 
