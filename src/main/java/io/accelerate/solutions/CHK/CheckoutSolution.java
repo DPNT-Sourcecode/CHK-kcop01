@@ -50,7 +50,7 @@ public class CheckoutSolution {
             for (char item : skus.toCharArray()) {
                 skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
             }
-            applyFreeItemOffer(skuFrequency, freeItemsOffer, unitPrices);
+            applyFreeItemOffer(skuFrequency, freeItemsOffer);
 
             return calculate(skuFrequency, bundleOffers, unitPrices);
         } else {
@@ -59,7 +59,7 @@ public class CheckoutSolution {
         }
     }
 
-    private void applyFreeItemOffer(Map<Character,Integer>  itemsBought, List<FreeItem> freeItemList, Map<Character,Integer> unitPrices ) {
+    private void applyFreeItemOffer(Map<Character,Integer>  itemsBought, List<FreeItem> freeItemList ) {
 
         for ( FreeItem freeItem : freeItemList) {
             int quantity = itemsBought.getOrDefault(freeItem.buyItem, 0);
@@ -162,4 +162,5 @@ public class CheckoutSolution {
     }
 
 }
+
 
