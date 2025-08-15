@@ -156,7 +156,7 @@ public class CheckoutSolutionTest
             CheckoutSolution checkoutSolution = new CheckoutSolution();
             int result = checkoutSolution.checkout(skus);
 
-            assertThat(result, equalTo(30));
+            assertThat(result, equalTo(40));
         }
         @Test
         void testCheckoutOffer2F(){
@@ -164,6 +164,7 @@ public class CheckoutSolutionTest
             CheckoutSolution checkoutSolution = new CheckoutSolution();
             int result = checkoutSolution.checkout(skus);
 
-            assertThat(result, equalTo(90));
+            assertThat(result, equalTo(100));
         }
 }
+

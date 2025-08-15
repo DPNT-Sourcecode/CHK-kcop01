@@ -66,17 +66,14 @@ public class CheckoutSolution {
             if (freeItem.buyItem == freeItem.freeItem){
                 int group = freeItem.buyQuantity + 1;
                 int fullGroup = quantity / group;
-                int remainder = quantity % group;
-                int paidQuanity = fullGroup * freeItem.buyQuantity + Math.min(remainder, freeItem.buyQuantity);
-                int total = paidQuanity * unitPrices.get(freeItem.buyItem);
+                int paidQuanity = quantity - fullGroup;
                 itemsBought.put(freeItem.freeItem, paidQuanity);
 
+            } else {
+                int bought = itemsBought.getOrDefault(freeItem.buyItem,0);
+                int freeItems = (bought / freeItem.buyQuantity) * freeItem.freeQuantity;
+                itemsBought.put(freeItem.freeItem, max(0, itemsBought.getOrDefault(freeItem.freeItem, 0) - freeItems));
             }
-
-            int bought = itemsBought.getOrDefault(freeItem.buyItem,0);
-            int freeItems = (bought / freeItem.buyQuantity) * freeItem.freeQuantity;
-            int j = itemsBought.getOrDefault(freeItem.freeItem, 0);
-            itemsBought.put(freeItem.freeItem, max(0, itemsBought.getOrDefault(freeItem.freeItem, 0) - freeItems));
         }
 
     }
@@ -165,3 +162,4 @@ public class CheckoutSolution {
     }
 
 }
+
