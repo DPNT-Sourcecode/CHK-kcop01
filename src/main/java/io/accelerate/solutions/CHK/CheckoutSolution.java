@@ -60,6 +60,7 @@ public class CheckoutSolution {
     }
 
     private void applyFreeItemOffer(Map<Character,Integer>  itemsBought, List<FreeItem> freeItemList, Map<Character,Integer> unitPrices ) {
+
         for ( FreeItem freeItem : freeItemList) {
             int quantity = itemsBought.getOrDefault(freeItem.buyItem, 0);
             if (freeItem.buyItem == freeItem.freeItem){
@@ -164,4 +165,5 @@ public class CheckoutSolution {
     }
 
 }
+
 
