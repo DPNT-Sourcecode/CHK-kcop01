@@ -68,7 +68,7 @@ public class CheckoutSolution {
                 int remainder = quantity % group;
                 int paidQuanity = fullGroup * freeItem.buyQuantity + Math.min(remainder, freeItem.buyQuantity);
                 int total = paidQuanity * unitPrices.get(freeItem.buyItem);
-                itemsBought.put(freeItem.freeItem, total);
+                itemsBought.put(freeItem.freeItem, paidQuanity);
 
             }
 
@@ -164,3 +164,4 @@ public class CheckoutSolution {
     }
 
 }
+
