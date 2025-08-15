@@ -64,7 +64,7 @@ public class CheckoutSolution {
         for ( FreeItem freeItem : freeItemList) {
             int quantity = itemsBought.getOrDefault(freeItem.buyItem, 0);
             if (freeItem.buyItem == freeItem.freeItem){
-                int group = freeItem.buyQuantity + 1;
+                int group = freeItem.buyQuantity - 1;
                 int fullGroup = quantity / group;
                 int remainder = quantity % group;
                 int paidQuanity = fullGroup * freeItem.buyQuantity + Math.min(remainder, freeItem.buyQuantity);
@@ -165,5 +165,6 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
