@@ -19,7 +19,7 @@ public class CheckoutSolution {
     public static final int UNIT_PRICE_H = 10;
     public static final int UNIT_PRICE_I = 35;
     public static final int UNIT_PRICE_J = 60;
-    public static final int UNIT_PRICE_K = 80;
+    public static final int UNIT_PRICE_K = 70;
     public static final int UNIT_PRICE_L = 90;
     public static final int UNIT_PRICE_M = 15;
     public static final int UNIT_PRICE_N = 40;
@@ -27,17 +27,18 @@ public class CheckoutSolution {
     public static final int UNIT_PRICE_P = 50;
     public static final int UNIT_PRICE_Q = 30;
     public static final int UNIT_PRICE_R = 50;
-    public static final int UNIT_PRICE_S = 30;
+    public static final int UNIT_PRICE_S = 20;
     public static final int UNIT_PRICE_T = 20;
     public static final int UNIT_PRICE_U = 40;
     public static final int UNIT_PRICE_V = 50;
     public static final int UNIT_PRICE_W = 20;
-    public static final int UNIT_PRICE_X = 90;
-    public static final int UNIT_PRICE_Y = 10;
-    public static final int UNIT_PRICE_Z = 50;
+    public static final int UNIT_PRICE_X = 17;
+    public static final int UNIT_PRICE_Y = 20;
+    public static final int UNIT_PRICE_Z = 21;
 
 
     public Integer checkout(String skus) {
+        int total = 0;
         if (skus != null &&(skus.matches("[A-Z]+"))) {
 
             Map<Character, List<BundleOffer>> bundleOffers = new HashMap<>();
@@ -50,13 +51,48 @@ public class CheckoutSolution {
             for (char item : skus.toCharArray()) {
                 skuFrequency.put(item,skuFrequency.getOrDefault(item,0) + 1);
             }
+            total += applyGroupOffer(skuFrequency, unitPrices);
             applyFreeItemOffer(skuFrequency, freeItemsOffer);
 
-            return calculate(skuFrequency, bundleOffers, unitPrices);
+            return calculate(skuFrequency, bundleOffers, unitPrices, total);
         } else {
             if (skus != null && skus.isEmpty()) return 0;
                 else return -1;
         }
+    }
+
+    private int applyGroupOffer(Map<Character, Integer> itemsBought, Map<Character,Integer> unitPrices) {
+        List<Character> groupItemsOffer = List.of('S', 'T', 'X', 'Y', 'Z');
+        int groupSize = 3;
+        int groupPrice = 45;
+        int total = 0;
+
+        List<Integer> prices = new ArrayList<>();
+        for (char c: groupItemsOffer) {
+            int quantity = itemsBought.getOrDefault(c,0);
+            for (int i = 0; i < quantity; i++) {
+                prices.add(unitPrices.get(c));
+            }
+        }
+        if (prices.isEmpty()) return 0;
+
+        // sort highest price first
+        prices.sort((a, b) -> b - a);
+        int i = 0;
+        while (i + groupSize - 1 < prices.size()) {
+            total += groupPrice;
+            i += groupSize;
+        }
+        // calculate leftover items
+        while (i < prices.size()) {
+            total += prices.get(i++);
+        }
+
+        // remove items from bought basket
+        for (char c : groupItemsOffer) {
+            itemsBought.put(c, 0);
+        }
+        return total;
     }
 
     private void applyFreeItemOffer(Map<Character,Integer>  itemsBought, List<FreeItem> freeItemList ) {
@@ -78,8 +114,7 @@ public class CheckoutSolution {
 
     }
 
-    private int calculate(Map<Character,Integer> itemsBuying, Map<Character, List<BundleOffer>> bundleOffers, Map<Character,Integer> unitPrices) {
-        int totalPrice = 0;
+    private int calculate(Map<Character,Integer> itemsBuying, Map<Character, List<BundleOffer>> bundleOffers, Map<Character,Integer> unitPrices, int totalPrice) {
         for (Map.Entry<Character, Integer> entry: itemsBuying.entrySet()) {
             char product = entry.getKey();
             int quantity = entry.getValue();
@@ -140,7 +175,7 @@ public class CheckoutSolution {
                 new BundleOffer(5, 45)
         ));
         bundleOffers.put('K', List.of(
-                new BundleOffer(2, 150)
+                new BundleOffer(2, 120)
         ));
         bundleOffers.put('P', List.of(
                 new BundleOffer(5, 200)
@@ -162,3 +197,4 @@ public class CheckoutSolution {
     }
 
 }
+
