@@ -17,7 +17,7 @@ public class CheckoutSolutionTest
     }
     @Test
     void testCheckoutGroupOffer2(){
-        String skus = "ZXYZXX";
+        String skus = "ZZXYXX";
         CheckoutSolution checkoutSolution = new CheckoutSolution();
         int result = checkoutSolution.checkout(skus);
 
@@ -183,5 +183,6 @@ public class CheckoutSolutionTest
             assertThat(result, equalTo(100));
         }
 }
+
 
 
